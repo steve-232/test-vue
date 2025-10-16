@@ -26,7 +26,7 @@ button {
   font-weight: bold;
   text-transform: uppercase;
   background-color: var(--color-btn-bg);
-  border: 1px solid var(--color-btn-border);
+  border: 1px solid var(--color-border-primary);
   transition: opacity 100ms linear 10ms;
 
   &:hover {

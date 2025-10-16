@@ -5,10 +5,14 @@
   --color-bg-primary: #d6d6d6;
   --color-bg-secondary: #fff;
 
+  --color-border-primary: #000;
+  --color-border-secondary: #ddd;
+
   --color-btn-bg: #ebebeb;
-  --color-btn-border: #000;
 
   --color-header-bg: #f09087;
+
+  --color-table-header-bg: #e5e5e5;
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-synthesis: none;

@@ -20,6 +20,7 @@ import HeroBtn from "@/components/common/HeroBtn.vue";
   justify-content: space-between;
   align-items: center;
   background-color: var(--color-header-bg);
+  border-bottom: solid 1px var(--color-border-primary);
 
   &__title {
     margin: 0;
