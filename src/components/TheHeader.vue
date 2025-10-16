@@ -1,6 +1,6 @@
 <template>
   <header class="page-header">
-    <h2 class="page-header__title">Horse Racing</h2>
+    <Title tag="h2" class="page-header__title">Horse Racing</Title>
 
     <div class="page-header__actions">
       <HeroBtn>Generate program</HeroBtn>
@@ -9,6 +9,7 @@
   </header>
 </template>
 <script setup lang="ts">
+import Title from "@/components/common/Title.vue";
 import HeroBtn from "@/components/common/HeroBtn.vue";
 </script>
 
