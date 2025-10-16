@@ -1,15 +1,11 @@
 <template>
-  <BaseButton
-    :type="type"
-    :disabled="disabled"
-    :loading="loading"
-    class="hero-btn"
+  <BaseBtn :type="type" :disabled="disabled" :loading="loading" class="hero-btn"
     ><slot></slot
-  ></BaseButton>
+  ></BaseBtn>
 </template>
 
 <script setup lang="ts">
-import BaseButton from "@/components/base/BaseButton.vue";
+import BaseBtn from "@/components/base/BaseBtn.vue";
 
 interface Props {
   type?: "button" | "reset" | "submit";
