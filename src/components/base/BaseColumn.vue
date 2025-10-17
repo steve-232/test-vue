@@ -31,13 +31,17 @@ const {
 
 <style scoped lang="scss">
 .column {
+  height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+
   &__header {
     padding: 15px 20px;
     background-color: var(--color-bg-secondary);
     border: 1px solid var(--color-border-primary);
   }
   &__content {
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 }
 </style>
