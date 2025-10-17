@@ -5,7 +5,7 @@
       <ColumnHorseList />
       <ColumnHorseList />
       <ColumnProgram />
-      <ColumnHorseList />
+      <ColumnResults />
     </div>
   </div>
 </template>
@@ -14,6 +14,7 @@
 import TheHeader from "@/components/TheHeader.vue";
 import ColumnHorseList from "@/components/ColumnHorseList.vue";
 import ColumnProgram from "@/components/ColumnProgram.vue";
+import ColumnResults from "@/components/ColumnResults.vue";
 </script>
 
 <style scoped lang="scss">
