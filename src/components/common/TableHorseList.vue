@@ -18,13 +18,7 @@ import Table from "@/components/base/BaseTable.vue";
 import TableRow from "@/components/base/BaseTableRow.vue";
 import TableHeader from "@/components/base/BaseTableHeader.vue";
 import TableCell from "@/components/base/BaseTableCell.vue";
-
-interface Horse {
-  id: number;
-  name: string;
-  condition: number;
-  color: string;
-}
+import type { Horse } from "@/ts";
 
 interface Props {
   data: Horse[];

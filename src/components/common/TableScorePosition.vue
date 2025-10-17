@@ -22,12 +22,7 @@ import TableRow from "@/components/base/BaseTableRow.vue";
 import TableHeader from "@/components/base/BaseTableHeader.vue";
 import TableCell from "@/components/base/BaseTableCell.vue";
 import Title from "@/components/common/Title.vue";
-
-interface TableScorePositionItem {
-  id: number;
-  position: number;
-  name: string;
-}
+import type { TableScorePositionItem } from "@/ts";
 
 interface Props {
   data: TableScorePositionItem[];
