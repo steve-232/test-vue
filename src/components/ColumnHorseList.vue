@@ -5,12 +5,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onBeforeMount } from "vue";
 import BaseColumn from "@/components/base/BaseColumn.vue";
 import TableHorseList from "@/components/common/TableHorseList.vue";
 import { useHorsesStore } from "@/stores/horses";
+import { storeToRefs } from "pinia";
 
-const store = useHorsesStore();
+const horsesStore = useHorsesStore();
+const { state: data } = storeToRefs(horsesStore);
 
-const data = ref(store.$state);
+onBeforeMount(() => horsesStore.generateHorses());
 </script>
