@@ -19,7 +19,7 @@ import HeroBtn from "@/components/common/HeroBtn.vue";
   padding: 10px 30px;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--color-header-bg);
+  background-color: var(--color-header-bg-primary);
   border-bottom: solid 1px var(--color-border-primary);
 
   &__title {
