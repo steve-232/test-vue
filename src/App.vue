@@ -3,7 +3,7 @@
     <TheHeader />
     <div class="layout">
       <ColumnHorseList />
-      <ColumnHorseList />
+      <div>Race</div>
       <ColumnProgram />
       <ColumnResults />
     </div>
