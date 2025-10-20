@@ -1,5 +1,6 @@
+import type { HorseName } from "../types";
 export interface TableScorePositionItem {
   id: number;
   position: number;
-  name: string;
+  name: HorseName;
 }

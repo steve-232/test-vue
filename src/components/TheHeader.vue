@@ -3,14 +3,20 @@
     <Title tag="h2" class="page-header__title">Horse Racing</Title>
 
     <div class="page-header__actions">
-      <HeroBtn>Generate program</HeroBtn>
+      <HeroBtn @click="handleClick">Generate program</HeroBtn>
       <HeroBtn>Start / pause</HeroBtn>
     </div>
   </header>
 </template>
 <script setup lang="ts">
+import { useRaceScheduleStore } from "@/stores/raceSchedule";
+
 import Title from "@/components/common/Title.vue";
 import HeroBtn from "@/components/common/HeroBtn.vue";
+
+const raceScheduleStore = useRaceScheduleStore();
+
+const handleClick = () => raceScheduleStore.generateRaceSchedule();
 </script>
 
 <style scoped lang="scss">
