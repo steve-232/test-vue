@@ -36,8 +36,8 @@ export const HORSE_NAMES = [
 
 export const HORSE_COLORS = [
   "Crimson",
-  "Azure",
-  "Ivory",
+  "Sapphire",
+  "Burgundy",
   "Coral",
   "Teal",
   "Olive",
@@ -45,7 +45,7 @@ export const HORSE_COLORS = [
   "Gold",
   "Indigo",
   "Violet",
-  "Beige",
+  "Chestnut",
   "Cyan",
   "Magenta",
   "Maroon",
