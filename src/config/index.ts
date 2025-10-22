@@ -2,14 +2,7 @@ export const NUMBER_OF_HORSES = 20;
 export const NUMBER_OF_RACES = 6;
 export const NUMBER_OF_HORSES_PER_RACE = 10;
 
-export const RACE_LENGTH = [
-  "1200m",
-  "1400m",
-  "1600m",
-  "1800m",
-  "2000m",
-  "2200m",
-] as const;
+export const RACE_LENGTH = [1200, 1400, 1600, 1800, 2000, 2200, 2400] as const;
 
 export const HORSE_NAMES = [
   "Thunder",

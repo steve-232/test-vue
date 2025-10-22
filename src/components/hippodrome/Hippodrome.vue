@@ -2,7 +2,7 @@
   <section class="hippodrome">
     <div class="hippodrome__content" :key="refreshKey">
       <HippodromeHorse
-        v-for="(horse, i) in activeRace"
+        v-for="(horse, i) in activeRace?.participants"
         :label="`${i + 1}`"
         :key="horse.id"
         :horse="{
@@ -14,8 +14,8 @@
       />
     </div>
     <div class="hippodrome__footer">
-      Lap 1 - 1200m - {{ howManyParticipantsFinishedTheRace
-      }}<span>Finish</span>
+      {{ activeRace?.title }} - {{ activeRace?.length }}m
+      <span>Finish</span>
     </div>
   </section>
 </template>
