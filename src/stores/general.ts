@@ -9,19 +9,16 @@ export const useGeneralStore = defineStore("general", () => {
   const horses = ref<Horse[]>([]);
   const playState = ref<PlayState>(PlayState.PAUSED);
 
-  function togglePlayState() {
-    playState.value =
-      playState.value === PlayState.PAUSED
-        ? PlayState.RUNNING
-        : PlayState.PAUSED;
-  }
-
   function pauseRace() {
     playState.value = PlayState.PAUSED;
   }
 
   function startRace() {
     playState.value = PlayState.RUNNING;
+  }
+
+  function togglePlayState() {
+    playState.value === PlayState.PAUSED ? startRace() : pauseRace();
   }
 
   function generateHorses() {

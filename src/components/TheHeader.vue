@@ -6,9 +6,13 @@
       <HeroBtn @click="raceStore.generateRaceSchedule"
         >Generate program</HeroBtn
       >
-      <HeroBtn @click="generalStore.togglePlayState">{{
-        generalStore.playState === PlayState.PAUSED ? "Start" : "Pause"
-      }}</HeroBtn>
+      <HeroBtn
+        :disabled="raceStore.raceSchedule.length === 0"
+        @click="generalStore.togglePlayState"
+        >{{
+          generalStore.playState === PlayState.PAUSED ? "Start" : "Pause"
+        }}</HeroBtn
+      >
     </div>
   </header>
 </template>

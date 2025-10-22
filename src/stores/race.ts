@@ -14,6 +14,7 @@ export const useRaceStore = defineStore("race", () => {
   const activeRace = ref<Race>();
   const activeRaceIndex = ref(0);
   const results = ref<Race[]>([]);
+  const newCircle = ref(false);
 
   function generateRace(index: number): Race {
     const race: Race = {
@@ -64,6 +65,11 @@ export const useRaceStore = defineStore("race", () => {
   }
 
   function finishedTheRace(participant: RaceParticipant) {
+    if (newCircle.value) {
+      results.value = [];
+      insertNewRaceIntoResults(activeRaceIndex.value);
+      newCircle.value = false;
+    }
     results.value[activeRaceIndex.value]?.participants.push(participant);
   }
 
@@ -77,6 +83,7 @@ export const useRaceStore = defineStore("race", () => {
       generalStore.pauseRace();
       activeRaceIndex.value = 0;
       activeRace.value = raceSchedule.value[activeRaceIndex.value];
+      newCircle.value = true;
     }
   }
 
