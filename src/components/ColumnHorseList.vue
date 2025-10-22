@@ -3,7 +3,7 @@
     :title="`Horse List (1 - ${NUMBER_OF_HORSES})`"
     header-bg-color="#f2eb67"
   >
-    <TableHorseList :data="data" />
+    <TableHorseList :data="horses" />
   </BaseColumn>
 </template>
 
@@ -12,13 +12,13 @@ import { onBeforeMount } from "vue";
 import { storeToRefs } from "pinia";
 
 import { NUMBER_OF_HORSES } from "@/config";
-import { useHorsesStore } from "@/stores/horses";
+import { useGeneralStore } from "@/stores/general";
 
 import BaseColumn from "@/components/base/BaseColumn.vue";
 import TableHorseList from "@/components/common/TableHorseList.vue";
 
-const horsesStore = useHorsesStore();
-const { state: data } = storeToRefs(horsesStore);
+const generalStore = useGeneralStore();
+const { horses } = storeToRefs(generalStore);
 
-onBeforeMount(() => horsesStore.generateHorses());
+onBeforeMount(() => generalStore.generateHorses());
 </script>

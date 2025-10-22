@@ -1,7 +1,7 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
 import { pickAndRemove } from "@/utils";
-import { useHorsesStore } from "./horses";
+import { useGeneralStore } from "@/stores/general";
 import { NUMBER_OF_RACES, NUMBER_OF_HORSES_PER_RACE } from "@/config";
 import { generateRandomId } from "@/utils";
 import { RACE_LENGTH } from "@/config";
@@ -19,8 +19,8 @@ export const useRaceScheduleStore = defineStore("raseSchedule", () => {
       length: RACE_LENGTH[index] as number,
       participants: [],
     };
-    const horsesStore = useHorsesStore();
-    const horsesList = [...horsesStore.state];
+    const generalStore = useGeneralStore();
+    const horsesList = [...generalStore.horses];
 
     for (let i = 0; i < NUMBER_OF_HORSES_PER_RACE; i++) {
       const selectedHorse = pickAndRemove(horsesList);
