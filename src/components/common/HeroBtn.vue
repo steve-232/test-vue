@@ -29,7 +29,7 @@ button {
   border: 1px solid var(--color-border-primary);
   transition: opacity 100ms linear 10ms;
 
-  &:hover {
+  &:not(:disabled):hover {
     opacity: 0.7;
     cursor: pointer;
   }
