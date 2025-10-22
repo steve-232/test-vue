@@ -1,25 +1,48 @@
 <template>
   <section class="hippodrome">
-    <div class="hippodrome__content">
+    <div class="hippodrome__content" :key="refreshKey">
       <HippodromeHorse
-        label="1"
-        :horse="{ id: 1, name: 'Blaze', condition: 50, color: 'Lime' }"
-      />
-      <HippodromeHorse
-        label="2"
-        :horse="{ id: 2, name: 'Blaze', condition: 30, color: 'Crimson' }"
-      />
-      <HippodromeHorse
-        label="3"
-        :horse="{ id: 2, name: 'Blaze', condition: 70, color: 'Salmon' }"
+        v-for="(horse, i) in activeRace"
+        :label="`${i + 1}`"
+        :key="horse.id"
+        :horse="{
+          id: horse.id,
+          condition: horse.condition,
+          color: horse.color as string,
+        }"
+        @finished-the-race="participantFinishedTheRace"
       />
     </div>
-    <div class="hippodrome__footer">Lap 1 - 1200m <span>Finish</span></div>
+    <div class="hippodrome__footer">
+      Lap 1 - 1200m - {{ howManyParticipantsFinishedTheRace
+      }}<span>Finish</span>
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
+import { ref, watch } from "vue";
+import { storeToRefs } from "pinia";
+import { useRaceScheduleStore } from "@/stores/raceSchedule";
 import HippodromeHorse from "@/components/hippodrome/HippodromeHorse.vue";
+import { NUMBER_OF_HORSES_PER_RACE } from "@/config";
+
+const raceScheduleStore = useRaceScheduleStore();
+const { activeRace } = storeToRefs(raceScheduleStore);
+
+const refreshKey = ref(Date.now());
+const howManyParticipantsFinishedTheRace = ref(0);
+
+const participantFinishedTheRace = () =>
+  (howManyParticipantsFinishedTheRace.value += 1);
+
+watch(howManyParticipantsFinishedTheRace, (newVal) => {
+  if (newVal === NUMBER_OF_HORSES_PER_RACE) {
+    howManyParticipantsFinishedTheRace.value = 0;
+    raceScheduleStore.nextActiveRace();
+    refreshKey.value = Date.now();
+  }
+});
 </script>
 
 <style scoped lang="scss">

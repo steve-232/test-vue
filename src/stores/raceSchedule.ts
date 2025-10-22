@@ -6,7 +6,9 @@ import { NUMBER_OF_RACES, NUMBER_OF_HORSES_PER_RACE } from "@/config";
 import type { RaceParticipant } from "@/ts";
 
 export const useRaceScheduleStore = defineStore("raseSchedule", () => {
-  const state = ref<RaceParticipant[][]>([]);
+  const raceSchedule = ref<RaceParticipant[][]>([]);
+  const activeRace = ref<RaceParticipant[]>([]);
+  const activeRaceIndex = ref(0);
 
   function generateRace(): RaceParticipant[] {
     const race: RaceParticipant[] = [];
@@ -20,6 +22,8 @@ export const useRaceScheduleStore = defineStore("raseSchedule", () => {
         id: selectedHorse.id,
         position: i + 1,
         name: selectedHorse.name,
+        color: selectedHorse.color,
+        condition: selectedHorse.condition,
       });
     }
 
@@ -27,12 +31,27 @@ export const useRaceScheduleStore = defineStore("raseSchedule", () => {
   }
 
   function generateRaceSchedule() {
-    state.value = [];
+    raceSchedule.value = [];
+    activeRaceIndex.value = 0;
 
     for (let i = 0; i < NUMBER_OF_RACES; i++) {
-      state.value.push(generateRace());
+      raceSchedule.value.push(generateRace());
     }
+
+    activeRace.value = raceSchedule.value[0] as RaceParticipant[];
   }
 
-  return { state, generateRaceSchedule };
+  function nextActiveRace() {
+    activeRaceIndex.value += 1;
+    activeRace.value = raceSchedule.value[
+      activeRaceIndex.value
+    ] as RaceParticipant[];
+  }
+
+  return {
+    raceSchedule,
+    activeRace,
+    nextActiveRace,
+    generateRaceSchedule,
+  };
 });

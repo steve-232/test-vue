@@ -15,16 +15,17 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faHorse } from "@fortawesome/free-solid-svg-icons";
-
-import type { Horse } from "@/ts";
 import BaseRacePath from "@/components/base/BaseRacePath.vue";
 
 interface Props {
   label?: string;
-  horse: Horse;
+  horse: {
+    id: number;
+    condition: number;
+    color: string;
+  };
 }
 
 const { label, horse } = defineProps<Props>();

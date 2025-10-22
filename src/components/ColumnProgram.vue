@@ -1,7 +1,7 @@
 <template>
   <BaseColumn title="Program" text-align="center" header-bg-color="#5288ee">
     <TableScorePosition
-      v-for="(race, i) in raceScheduleData"
+      v-for="(race, i) in raceSchedule"
       :data="race"
       :title="`Lap ${i + 1} - ${RACE_LENGTH[i]}`"
     />
@@ -18,5 +18,5 @@ import BaseColumn from "@/components/base/BaseColumn.vue";
 import TableScorePosition from "@/components/common/TableScorePosition.vue";
 
 const raceScheduleStore = useRaceScheduleStore();
-const { state: raceScheduleData } = storeToRefs(raceScheduleStore);
+const { raceSchedule } = storeToRefs(raceScheduleStore);
 </script>

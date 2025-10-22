@@ -1,5 +1,7 @@
-import type { Horse } from "./Horse";
-
-export interface RaceParticipant extends Pick<Horse, "id" | "name"> {
+export interface RaceParticipant {
+  id: number;
+  name: string;
   position: number;
+  condition: number;
+  color?: string;
 }
