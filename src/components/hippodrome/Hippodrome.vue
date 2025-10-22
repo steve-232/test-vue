@@ -1,22 +1,25 @@
 <template>
   <section class="hippodrome">
-    <div class="hippodrome__content" :key="refreshKey">
-      <HippodromeHorse
-        v-for="(horse, i) in activeRace?.participants"
-        :label="`${i + 1}`"
-        :key="horse.id"
-        :horse="{
+    <Text v-if="!activeRace">No Race</Text>
+    <div v-else>
+      <div class="hippodrome__content" :key="refreshKey">
+        <HippodromeHorse
+          v-for="(horse, i) in activeRace?.participants"
+          :label="`${i + 1}`"
+          :key="horse.id"
+          :horse="{
           id: horse.id,
           condition: horse.condition,
           color: horse.color as HorseColor,
           name: horse.name as HorseName
         }"
-        @finished-the-race="participantFinishedTheRace"
-      />
-    </div>
-    <div class="hippodrome__footer">
-      {{ activeRace?.title }} - {{ activeRace?.length }}m
-      <span>Finish</span>
+          @finished-the-race="participantFinishedTheRace"
+        />
+      </div>
+      <div class="hippodrome__footer">
+        {{ activeRace?.title }} - {{ activeRace?.length }}m
+        <span>Finish</span>
+      </div>
     </div>
   </section>
 </template>
@@ -26,6 +29,7 @@ import { ref, watch } from "vue";
 import { storeToRefs } from "pinia";
 import { useRaceStore } from "@/stores/race";
 import HippodromeHorse from "@/components/hippodrome/HippodromeHorse.vue";
+import Text from "@/components/common/Text.vue";
 import { NUMBER_OF_HORSES_PER_RACE } from "@/config";
 import type { HorseColor, HorseName, RaceParticipant } from "@/ts";
 
