@@ -1,9 +1,9 @@
 <template>
-  <BaseColumn title="Results" text-align="center" header-bg-color="#a0d179">
-    <Text v-if="!results.length">No Results</Text>
+  <BaseColumn title="Program" text-align="center" header-bg-color="#5288ee">
+    <BaseText v-if="!raceSchedule.length">No Program</BaseText>
     <TableScorePosition
       v-else
-      v-for="race in results"
+      v-for="race in raceSchedule"
       :key="race.id"
       :data="race.participants"
       :title="`${race.title} - ${race.length}m`"
@@ -15,9 +15,9 @@
 import { storeToRefs } from "pinia";
 import { useRaceStore } from "@/stores/race";
 import BaseColumn from "@/components/base/BaseColumn.vue";
+import BaseText from "@/components/base/BaseText.vue";
 import TableScorePosition from "@/components/common/TableScorePosition.vue";
-import Text from "@/components/common/Text.vue";
 
 const raceStore = useRaceStore();
-const { results } = storeToRefs(raceStore);
+const { raceSchedule } = storeToRefs(raceStore);
 </script>

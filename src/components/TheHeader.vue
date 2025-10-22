@@ -1,6 +1,6 @@
 <template>
   <header class="page-header">
-    <Title tag="h2" class="page-header__title">Horse Racing</Title>
+    <BaseTitle tag="h2" class="page-header__title">Horse Racing</BaseTitle>
 
     <div class="page-header__actions">
       <HeroBtn @click="raceStore.generateRaceSchedule"
@@ -20,7 +20,7 @@
 import { PlayState } from "@/ts";
 import { useGeneralStore } from "@/stores/general";
 import { useRaceStore } from "@/stores/race";
-import Title from "@/components/common/Title.vue";
+import BaseTitle from "@/components/base/BaseTitle.vue";
 import HeroBtn from "@/components/common/HeroBtn.vue";
 
 const raceStore = useRaceStore();

@@ -18,7 +18,11 @@ export const useGeneralStore = defineStore("general", () => {
   }
 
   function togglePlayState() {
-    playState.value === PlayState.PAUSED ? startRace() : pauseRace();
+    if (playState.value === PlayState.PAUSED) {
+      startRace();
+    } else {
+      pauseRace();
+    }
   }
 
   function generateHorses() {

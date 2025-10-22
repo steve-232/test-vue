@@ -3,7 +3,7 @@
     <TheHeader />
     <div class="layout">
       <ColumnHorseList />
-      <Hippodrome />
+      <ColumnHippodrome />
       <ColumnProgram />
       <ColumnResults />
     </div>
@@ -12,10 +12,10 @@
 
 <script setup lang="ts">
 import TheHeader from "@/components/TheHeader.vue";
-import Hippodrome from "@/components/hippodrome/Hippodrome.vue";
-import ColumnHorseList from "@/components/ColumnHorseList.vue";
-import ColumnProgram from "@/components/ColumnProgram.vue";
-import ColumnResults from "@/components/ColumnResults.vue";
+import ColumnHippodrome from "@/components/columns/ColumnHippodrome.vue";
+import ColumnHorseList from "@/components/columns/ColumnHorseList.vue";
+import ColumnProgram from "@/components/columns/ColumnProgram.vue";
+import ColumnResults from "@/components/columns/ColumnResults.vue";
 </script>
 
 <style scoped lang="scss">

@@ -1,7 +1,7 @@
 <template>
   <div class="table-score-position">
     <header v-if="title?.length" class="table-score-position__header">
-      <Title tag="h4">{{ title }}</Title>
+      <BaseTitle tag="h4">{{ title }}</BaseTitle>
     </header>
     <Table>
       <TableRow>
@@ -21,7 +21,7 @@ import Table from "@/components/base/BaseTable.vue";
 import TableRow from "@/components/base/BaseTableRow.vue";
 import TableHeader from "@/components/base/BaseTableHeader.vue";
 import TableCell from "@/components/base/BaseTableCell.vue";
-import Title from "@/components/common/Title.vue";
+import BaseTitle from "@/components/base/BaseTitle.vue";
 import type { TableScorePositionItem } from "@/ts";
 
 interface Props {

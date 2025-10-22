@@ -26,7 +26,6 @@ import { PlayState } from "@/ts";
 interface Props {
   label?: string;
   animationDuration: number;
-  stopAnimation?: boolean;
 }
 
 const { label, animationDuration } = defineProps<Props>();

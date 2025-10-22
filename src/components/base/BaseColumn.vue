@@ -5,7 +5,7 @@
       class="column__header"
       :style="[{ textAlign, backgroundColor: headerBgColor }]"
     >
-      <Title tag="h3">{{ title }}</Title>
+      <BaseTitle tag="h3">{{ title }}</BaseTitle>
     </header>
     <div class="column__content">
       <slot></slot>
@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import Title from "@/components/common/Title.vue";
+import BaseTitle from "@/components/base/BaseTitle.vue";
 
 interface Props {
   title?: string;

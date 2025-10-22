@@ -1,9 +1,9 @@
 <template>
   <section class="hippodrome">
-    <Text v-if="!activeRace">No Race</Text>
+    <BaseText v-if="!activeRace">No Race</BaseText>
     <div v-else>
       <div class="hippodrome__content" :key="refreshKey">
-        <HippodromeHorse
+        <ColumnHippodromeHorse
           v-for="(horse, i) in activeRace?.participants"
           :label="`${i + 1}`"
           :key="horse.id"
@@ -28,8 +28,8 @@
 import { ref, watch } from "vue";
 import { storeToRefs } from "pinia";
 import { useRaceStore } from "@/stores/race";
-import HippodromeHorse from "@/components/hippodrome/HippodromeHorse.vue";
-import Text from "@/components/common/Text.vue";
+import ColumnHippodromeHorse from "@/components/columns/ColumnHippodromeHorse.vue";
+import BaseText from "@/components/base/BaseText.vue";
 import { NUMBER_OF_HORSES_PER_RACE } from "@/config";
 import type { HorseColor, HorseName, RaceParticipant } from "@/ts";
 
