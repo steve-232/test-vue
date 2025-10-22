@@ -52,6 +52,14 @@ watch(howManyParticipantsFinishedTheRace, (newVal) => {
     refreshKey.value = Date.now();
   }
 });
+
+watch(
+  () => raceStore.raceSchedule,
+  () => {
+    refreshKey.value = Date.now();
+    howManyParticipantsFinishedTheRace.value = 0;
+  }
+);
 </script>
 
 <style scoped lang="scss">
