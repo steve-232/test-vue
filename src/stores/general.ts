@@ -16,6 +16,14 @@ export const useGeneralStore = defineStore("general", () => {
         : PlayState.PAUSED;
   }
 
+  function pauseRace() {
+    playState.value = PlayState.PAUSED;
+  }
+
+  function startRace() {
+    playState.value = PlayState.RUNNING;
+  }
+
   function generateHorses() {
     const names = [...HORSE_NAMES];
     const colors = [...HORSE_COLORS];
@@ -42,5 +50,7 @@ export const useGeneralStore = defineStore("general", () => {
     togglePlayState,
     horses,
     generateHorses,
+    startRace,
+    pauseRace,
   };
 });

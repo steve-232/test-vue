@@ -18,24 +18,21 @@ import { computed } from "vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faHorse } from "@fortawesome/free-solid-svg-icons";
 import BaseRacePath from "@/components/base/BaseRacePath.vue";
+import type { Horse } from "@/ts";
 
 interface Props {
   label?: string;
-  horse: {
-    id: number;
-    condition: number;
-    color: string;
-  };
+  horse: Horse;
 }
 
 const { label, horse } = defineProps<Props>();
 
 const emit = defineEmits<{
-  finishedTheRace: [];
+  finishedTheRace: [horse: Horse];
 }>();
 
 const handleAnimationEnd = () => {
-  emit("finishedTheRace");
+  emit("finishedTheRace", { ...horse });
 };
 
 const horseSpeed = computed(() => 1500 + (100 - horse.condition) * 10);

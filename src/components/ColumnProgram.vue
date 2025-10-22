@@ -11,12 +11,10 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-
-import { useRaceScheduleStore } from "@/stores/raceSchedule";
-
+import { useRaceStore } from "@/stores/race";
 import BaseColumn from "@/components/base/BaseColumn.vue";
 import TableScorePosition from "@/components/common/TableScorePosition.vue";
 
-const raceScheduleStore = useRaceScheduleStore();
-const { raceSchedule } = storeToRefs(raceScheduleStore);
+const raceStore = useRaceStore();
+const { raceSchedule } = storeToRefs(raceStore);
 </script>

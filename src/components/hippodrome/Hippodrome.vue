@@ -8,7 +8,8 @@
         :horse="{
           id: horse.id,
           condition: horse.condition,
-          color: horse.color as string,
+          color: horse.color as HorseColor,
+          name: horse.name as HorseName
         }"
         @finished-the-race="participantFinishedTheRace"
       />
@@ -23,23 +24,31 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 import { storeToRefs } from "pinia";
-import { useRaceScheduleStore } from "@/stores/raceSchedule";
+import { useRaceStore } from "@/stores/race";
 import HippodromeHorse from "@/components/hippodrome/HippodromeHorse.vue";
 import { NUMBER_OF_HORSES_PER_RACE } from "@/config";
+import type { HorseColor, HorseName, RaceParticipant } from "@/ts";
 
-const raceScheduleStore = useRaceScheduleStore();
-const { activeRace } = storeToRefs(raceScheduleStore);
+const raceStore = useRaceStore();
+const { activeRace } = storeToRefs(raceStore);
 
 const refreshKey = ref(Date.now());
 const howManyParticipantsFinishedTheRace = ref(0);
 
-const participantFinishedTheRace = () =>
-  (howManyParticipantsFinishedTheRace.value += 1);
+const participantFinishedTheRace = (
+  participant: Omit<RaceParticipant, "position">
+) => {
+  raceStore.finishedTheRace({
+    ...participant,
+    position: howManyParticipantsFinishedTheRace.value + 1,
+  });
+  howManyParticipantsFinishedTheRace.value += 1;
+};
 
 watch(howManyParticipantsFinishedTheRace, (newVal) => {
   if (newVal === NUMBER_OF_HORSES_PER_RACE) {
     howManyParticipantsFinishedTheRace.value = 0;
-    raceScheduleStore.nextActiveRace();
+    raceStore.nextActiveRace();
     refreshKey.value = Date.now();
   }
 });

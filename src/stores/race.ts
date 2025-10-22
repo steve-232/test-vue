@@ -1,16 +1,19 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
-import { pickAndRemove } from "@/utils";
 import { useGeneralStore } from "@/stores/general";
-import { NUMBER_OF_RACES, NUMBER_OF_HORSES_PER_RACE } from "@/config";
-import { generateRandomId } from "@/utils";
-import { RACE_LENGTH } from "@/config";
-import type { Race } from "@/ts";
+import { generateRandomId, pickAndRemove } from "@/utils";
+import {
+  NUMBER_OF_RACES,
+  NUMBER_OF_HORSES_PER_RACE,
+  RACE_LENGTH,
+} from "@/config";
+import type { Race, RaceParticipant } from "@/ts";
 
-export const useRaceScheduleStore = defineStore("raseSchedule", () => {
+export const useRaceStore = defineStore("race", () => {
   const raceSchedule = ref<Race[]>([]);
   const activeRace = ref<Race>();
   const activeRaceIndex = ref(0);
+  const results = ref<Race[]>([]);
 
   function generateRace(index: number): Race {
     const race: Race = {
@@ -40,17 +43,41 @@ export const useRaceScheduleStore = defineStore("raseSchedule", () => {
   function generateRaceSchedule() {
     raceSchedule.value = [];
     activeRaceIndex.value = 0;
+    results.value = [];
 
     for (let i = 0; i < NUMBER_OF_RACES; i++) {
       raceSchedule.value.push(generateRace(i));
     }
 
     activeRace.value = raceSchedule.value[0];
+
+    insertNewRaceIntoResults(activeRaceIndex.value);
+  }
+
+  function insertNewRaceIntoResults(raceIndex: number) {
+    results.value.push({
+      id: generateRandomId(),
+      length: raceSchedule.value[raceIndex]?.length as number,
+      title: raceSchedule.value[raceIndex]?.title as string,
+      participants: [],
+    });
+  }
+
+  function finishedTheRace(participant: RaceParticipant) {
+    results.value[activeRaceIndex.value]?.participants.push(participant);
   }
 
   function nextActiveRace() {
-    activeRaceIndex.value += 1;
-    activeRace.value = raceSchedule.value[activeRaceIndex.value];
+    if (activeRaceIndex.value < NUMBER_OF_RACES - 1) {
+      activeRaceIndex.value += 1;
+      activeRace.value = raceSchedule.value[activeRaceIndex.value];
+      insertNewRaceIntoResults(activeRaceIndex.value);
+    } else {
+      const generalStore = useGeneralStore();
+      generalStore.pauseRace();
+      activeRaceIndex.value = 0;
+      activeRace.value = raceSchedule.value[activeRaceIndex.value];
+    }
   }
 
   return {
@@ -58,5 +85,7 @@ export const useRaceScheduleStore = defineStore("raseSchedule", () => {
     activeRace,
     nextActiveRace,
     generateRaceSchedule,
+    results,
+    finishedTheRace,
   };
 });
