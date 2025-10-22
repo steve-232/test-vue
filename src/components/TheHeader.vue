@@ -3,20 +3,26 @@
     <Title tag="h2" class="page-header__title">Horse Racing</Title>
 
     <div class="page-header__actions">
-      <HeroBtn @click="handleClick">Generate program</HeroBtn>
-      <HeroBtn>Start / pause</HeroBtn>
+      <HeroBtn @click="raceScheduleStore.generateRaceSchedule"
+        >Generate program</HeroBtn
+      >
+      <HeroBtn @click="generalStore.togglePlayState">{{
+        generalStore.playState === PlayState.PAUSED ? "Start" : "Pause"
+      }}</HeroBtn>
     </div>
   </header>
 </template>
 <script setup lang="ts">
+import { PlayState } from "@/ts";
+
+import { useGeneralStore } from "@/stores/general";
 import { useRaceScheduleStore } from "@/stores/raceSchedule";
 
 import Title from "@/components/common/Title.vue";
 import HeroBtn from "@/components/common/HeroBtn.vue";
 
 const raceScheduleStore = useRaceScheduleStore();
-
-const handleClick = () => raceScheduleStore.generateRaceSchedule();
+const generalStore = useGeneralStore();
 </script>
 
 <style scoped lang="scss">
