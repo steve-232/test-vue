@@ -1,5 +1,5 @@
 import { expect, it, describe } from "vitest";
-import { pickAndRemove } from "./pickAndRemove";
+import { pickAndRemove } from "@/utils/pickAndRemove";
 
 describe("pickAndRemove", () => {
   it("should pick a random value from the array, remove it from the array, and return it", () => {
