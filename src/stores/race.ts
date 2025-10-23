@@ -1,7 +1,7 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
 import { useGeneralStore } from "@/stores/general";
-import { generateRandomId, pickAndRemove } from "@/utils";
+import { generateUniqueId, pickAndRemove } from "@/utils";
 import {
   NUMBER_OF_RACES,
   NUMBER_OF_HORSES_PER_RACE,
@@ -18,7 +18,7 @@ export const useRaceStore = defineStore("race", () => {
 
   function generateRace(index: number): Race {
     const race: Race = {
-      id: generateRandomId(),
+      id: generateUniqueId(),
       title: `Lap ${index + 1}`,
       length: RACE_LENGTH[index] as number,
       participants: [],
@@ -57,7 +57,7 @@ export const useRaceStore = defineStore("race", () => {
 
   function insertNewRaceIntoResults(raceIndex: number) {
     results.value.push({
-      id: generateRandomId(),
+      id: generateUniqueId(),
       length: raceSchedule.value[raceIndex]?.length as number,
       title: raceSchedule.value[raceIndex]?.title as string,
       participants: [],

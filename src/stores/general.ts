@@ -1,6 +1,6 @@
 import { ref, readonly } from "vue";
 import { defineStore } from "pinia";
-import { generateRandomId, generateRandomNumber, pickAndRemove } from "@/utils";
+import { generateUniqueId, generateRandomNumber, pickAndRemove } from "@/utils";
 import { NUMBER_OF_HORSES, HORSE_NAMES, HORSE_COLORS } from "@/config";
 import { PlayState } from "@/ts";
 import type { Horse } from "@/ts";
@@ -32,7 +32,7 @@ export const useGeneralStore = defineStore("general", () => {
 
     function createHorse(): Horse {
       return {
-        id: generateRandomId(),
+        id: generateUniqueId(),
         condition: generateRandomNumber(1, 100),
         name: pickAndRemove(names),
         color: pickAndRemove(colors),
