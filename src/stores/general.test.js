@@ -1,5 +1,4 @@
 import { setActivePinia, createPinia } from "pinia";
-import { describe, it, expect, beforeEach } from "vitest";
 import { useGeneralStore } from "@/stores/general";
 import { PlayState } from "@/ts";
 import { NUMBER_OF_HORSES } from "@/config";

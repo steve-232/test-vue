@@ -1,4 +1,3 @@
-import { expect, it, vi, describe } from "vitest";
 import { generateRandomNumber } from "@/utils/generateRandomNumber";
 
 describe("generateRandomNumber", () => {

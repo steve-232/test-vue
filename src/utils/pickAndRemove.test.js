@@ -1,4 +1,3 @@
-import { expect, it, describe } from "vitest";
 import { pickAndRemove } from "@/utils/pickAndRemove";
 
 describe("pickAndRemove", () => {

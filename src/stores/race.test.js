@@ -1,5 +1,4 @@
 import { setActivePinia, createPinia } from "pinia";
-import { describe, it, expect, vi, beforeEach } from "vitest";
 import { useRaceStore } from "@/stores/race";
 
 vi.mock("@/config", () => ({
