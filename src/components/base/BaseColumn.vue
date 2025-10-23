@@ -3,11 +3,12 @@
     <header
       v-if="title.length"
       class="column__header"
+      data-testid="column-header"
       :style="[{ textAlign, backgroundColor: headerBgColor }]"
     >
       <BaseTitle tag="h3">{{ title }}</BaseTitle>
     </header>
-    <div class="column__content">
+    <div class="column__content" data-testid="column-content">
       <slot></slot>
     </div>
   </section>

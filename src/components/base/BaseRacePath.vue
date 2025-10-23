@@ -1,9 +1,12 @@
 <template>
-  <section class="race-path">
-    <div class="race-path__label" v-if="label">{{ label }}</div>
+  <section class="race-path" data-testid="race-path">
+    <div class="race-path__label" data-testid="race-path-label" v-if="label">
+      {{ label }}
+    </div>
     <div class="race-path__content">
       <span
         class="race-path__runner"
+        data-testid="race-path-runner"
         :style="[
           {
             animationDuration: `${animationDuration}ms`,
